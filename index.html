@@ -1,28 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy | Orinzent</title>
+    <title>Orinzent Calculator | All-in-One Smart & AI Calculator</title>
+    <meta name="description" content="Orinzent Calculator - High-precision scientific calculator, AI math assistant, financial tools, unit converter, and health calculators with total privacy.">
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            200: '#c7d2fe',
+                            400: '#818cf8',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            900: '#312e81',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #ffffff;
-            color: #334155;
-            scroll-behavior: smooth;
+            background-color: #0b0f19;
+            color: #cbd5e1;
         }
-        h1, h2 {
+        h1, h2, h3, h4, .font-display {
             font-family: 'Outfit', sans-serif;
-            color: #0f172a;
         }
-        .section-divider {
-            height: 1px;
-            background: linear-gradient(to right, #e2e8f0 0%, #f1f5f9 100%);
-            margin: 3rem 0;
+        .glow-indigo {
+            background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.18) 0%, rgba(11, 15, 25, 0) 70%);
+        }
+        .glass-card {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .phone-mockup {
+            box-shadow: 0 25px 60px -15px rgba(99, 102, 241, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);
         }
         .accent-dot {
             height: 6px;
@@ -31,151 +62,695 @@
             border-radius: 99px;
             display: inline-block;
             margin-right: 12px;
-            margin-bottom: 3px;
-        }
-        .nav-blur {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(8px);
+            margin-bottom: 2px;
         }
     </style>
 </head>
-<body class="selection:bg-indigo-50 selection:text-indigo-700">
+<body class="min-h-screen flex flex-col selection:bg-brand-500 selection:text-white">
 
-    <!-- Minimal Header -->
-    <nav class="fixed top-0 w-full z-50 nav-blur">
-        <div class="max-w-4xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <div class="w-7 h-7 bg-indigo-600 rounded flex items-center justify-center">
-                    <span class="text-white font-bold text-sm">O</span>
-                </div>
-                <span class="font-bold text-lg tracking-tight text-slate-900 uppercase">Orinzent</span>
-            </div>
-            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">Calculator</span>
-        </div>
-    </nav>
-
-    <main class="pt-40 pb-32 px-6">
-        <article class="max-w-3xl mx-auto">
+    <!-- ============================================================== -->
+    <!-- APP HEADER / NAVIGATION                                        -->
+    <!-- ============================================================== -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#0b0f19]/80 backdrop-blur-md border-b border-white/5 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             
-            <!-- Hero Header -->
-            <header class="mb-20">
-                <h1 class="text-5xl md:text-6xl font-bold tracking-tight mb-6">Privacy Policy</h1>
-                <p class="text-slate-500 font-medium flex items-center">
-                    <span class="inline-block w-4 h-[2px] bg-indigo-500 mr-3"></span>
-                    Last updated: January 2026
+            <!-- Logo & Brand -->
+            <a href="#home" onclick="navigateTo('home'); return false;" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-400 flex items-center justify-center shadow-lg shadow-brand-500/25 group-hover:scale-105 transition-transform">
+                    <span class="text-white font-black text-xl font-display">O</span>
+                </div>
+                <div class="flex flex-col">
+                    <div class="flex items-center gap-2">
+                        <span class="font-display font-bold text-xl tracking-tight text-white">Orinzent</span>
+                        <span class="text-[10px] font-semibold uppercase tracking-wider bg-brand-500/10 text-brand-400 px-2 py-0.5 rounded-full border border-brand-500/20">Calc</span>
+                    </div>
+                    <span class="text-[11px] text-slate-400 font-medium">Smart All-in-One Math</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Items -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#features" onclick="navigateTo('home', 'features')" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Features</a>
+                <a href="#calculators" onclick="navigateTo('home', 'calculators')" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Calculators</a>
+                <a href="#simulator" onclick="navigateTo('home', 'simulator')" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Interactive Demo</a>
+                
+                <!-- Dedicated Privacy Policy Link -->
+                <a href="#privacy" onclick="navigateTo('privacy'); return false;" class="text-sm font-semibold text-brand-400 hover:text-brand-300 flex items-center gap-1.5 transition-colors">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                    Privacy Policy
+                </a>
+            </nav>
+
+            <!-- Actions / CTA -->
+            <div class="flex items-center gap-4">
+                <a href="#download" onclick="navigateTo('home', 'download')" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white text-sm font-semibold shadow-lg shadow-brand-600/30 transition-all hover:shadow-brand-500/40 hover:-translate-y-0.5">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                    Download App
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="md:hidden text-slate-300 hover:text-white p-2" aria-label="Toggle Menu">
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden px-4 pt-2 pb-6 bg-[#0e1422] border-b border-white/10 space-y-3">
+            <a href="#features" onclick="toggleMobileMenu(); navigateTo('home', 'features')" class="block py-2 text-slate-300 hover:text-white font-medium">Features</a>
+            <a href="#calculators" onclick="toggleMobileMenu(); navigateTo('home', 'calculators')" class="block py-2 text-slate-300 hover:text-white font-medium">Calculators</a>
+            <a href="#simulator" onclick="toggleMobileMenu(); navigateTo('home', 'simulator')" class="block py-2 text-slate-300 hover:text-white font-medium">Interactive Demo</a>
+            <a href="#privacy" onclick="toggleMobileMenu(); navigateTo('privacy'); return false;" class="block py-2 font-semibold text-brand-400 hover:text-brand-300">Privacy Policy</a>
+            <div class="pt-2">
+                <a href="#download" onclick="toggleMobileMenu(); navigateTo('home', 'download')" class="block text-center w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold">Download App</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="h-20"></div>
+
+    <!-- ============================================================== -->
+    <!-- VIEW 1: MAIN HOMEPAGE CONTENT                                  -->
+    <!-- ============================================================== -->
+    <main id="homeView" class="flex-grow">
+        
+        <!-- Hero Section -->
+        <section class="relative pt-12 pb-24 lg:pt-20 lg:pb-32 overflow-hidden glow-indigo">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                    
+                    <!-- Left Hero Content -->
+                    <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-300 text-xs sm:text-sm font-medium">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                            Production Engine: Decimal Precision & AI Math
+                        </div>
+
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15]">
+                            The All-in-One <br/>
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 via-indigo-300 to-purple-400">Intelligent Calculator</span>
+                        </h1>
+
+                        <p class="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
+                            Experience flawless mathematical accuracy with zero floating-point errors, an AI problem solver, complete financial tools, and everyday utilities — with guaranteed 100% privacy.
+                        </p>
+
+                        <!-- CTA Group -->
+                        <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                            <a href="#simulator" onclick="navigateTo('home', 'simulator')" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold text-center shadow-xl shadow-brand-600/30 transition-all hover:scale-105">
+                                Try Interactive Simulator
+                            </a>
+                            <a href="#features" onclick="navigateTo('home', 'features')" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-200 border border-white/10 font-semibold text-center transition-all">
+                                Explore All Features
+                            </a>
+                        </div>
+
+                        <!-- Stats / Badges -->
+                        <div class="pt-8 border-t border-white/10 grid grid-cols-3 gap-6 max-w-md mx-auto lg:mx-0">
+                            <div>
+                                <div class="text-2xl font-bold font-display text-white">100%</div>
+                                <div class="text-xs text-slate-400">Decimal Accuracy</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold font-display text-white">12+</div>
+                                <div class="text-xs text-slate-400">Built-in Utilities</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold font-display text-white">0%</div>
+                                <div class="text-xs text-slate-400">Data Tracking</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Interactive Phone Mockup Preview -->
+                    <div id="simulator" class="lg:col-span-5 flex justify-center">
+                        <div class="phone-mockup w-[320px] sm:w-[340px] bg-slate-900 rounded-[44px] p-3 border-4 border-slate-700/60 relative">
+                            <!-- Speaker / Notch -->
+                            <div class="w-28 h-5 bg-slate-800 rounded-b-2xl mx-auto mb-2 flex items-center justify-center">
+                                <div class="w-10 h-1 bg-slate-700 rounded-full"></div>
+                            </div>
+
+                            <!-- Screen Container -->
+                            <div class="bg-slate-950 rounded-[36px] overflow-hidden flex flex-col h-[580px] border border-white/5">
+                                
+                                <!-- Top Bar Inside Phone -->
+                                <div class="px-5 pt-4 pb-2 flex justify-between items-center text-xs text-slate-400">
+                                    <span class="font-semibold text-slate-200">Orinzent Calc</span>
+                                    <div class="flex items-center gap-2">
+                                        <button onclick="toggleScientificUI()" id="sciToggleBtn" class="px-2 py-0.5 rounded-md bg-brand-500/20 text-brand-300 text-[10px] font-semibold hover:bg-brand-500/30">
+                                            Sci: OFF
+                                        </button>
+                                        <span class="text-emerald-400 text-[10px]">● Ready</span>
+                                    </div>
+                                </div>
+
+                                <!-- Screen Display -->
+                                <div class="px-5 py-4 flex flex-col justify-end items-end flex-grow bg-gradient-to-b from-transparent to-slate-900/50">
+                                    <div id="simHistory" class="text-xs text-slate-500 font-mono tracking-wider min-h-[20px] overflow-x-auto whitespace-nowrap w-full text-right"></div>
+                                    <div id="simDisplay" class="text-3xl sm:text-4xl font-bold text-white font-mono tracking-tight overflow-x-auto whitespace-nowrap w-full text-right mt-1">0</div>
+                                </div>
+
+                                <!-- Scientific Extra Keys (collapsible) -->
+                                <div id="sciKeysPanel" class="hidden grid-cols-4 gap-1.5 px-3 py-1 bg-slate-900/70 border-t border-white/5 text-[11px]">
+                                    <button onclick="simInput('sin(')" class="p-2 bg-slate-800 text-slate-300 rounded-lg hover:bg-slate-700 font-medium">sin</button>
+                                    <button onclick="simInput('cos(')" class="p-2 bg-slate-800 text-slate-300 rounded-lg hover:bg-slate-700 font-medium">cos</button>
+                                    <button onclick="simInput('tan(')" class="p-2 bg-slate-800 text-slate-300 rounded-lg hover:bg-slate-700 font-medium">tan</button>
+                                    <button onclick="simInput('^')" class="p-2 bg-slate-800 text-brand-300 rounded-lg hover:bg-slate-700 font-medium">xʸ</button>
+                                    <button onclick="simInput('(')" class="p-2 bg-slate-800 text-slate-300 rounded-lg hover:bg-slate-700 font-medium">(</button>
+                                    <button onclick="simInput(')')" class="p-2 bg-slate-800 text-slate-300 rounded-lg hover:bg-slate-700 font-medium">)</button>
+                                    <button onclick="simInput('sqrt(')" class="p-2 bg-slate-800 text-slate-300 rounded-lg hover:bg-slate-700 font-medium">√</button>
+                                    <button onclick="simInput('pi')" class="p-2 bg-slate-800 text-brand-300 rounded-lg hover:bg-slate-700 font-medium">π</button>
+                                </div>
+
+                                <!-- Keypad Buttons -->
+                                <div class="grid grid-cols-4 gap-2 p-3 bg-slate-900/90 border-t border-white/5">
+                                    <button onclick="simClear()" class="h-12 rounded-xl bg-rose-500/20 text-rose-300 hover:bg-rose-500/30 font-semibold text-sm transition-all active:scale-95">AC</button>
+                                    <button onclick="simBackspace()" class="h-12 rounded-xl bg-slate-800 text-slate-300 hover:bg-slate-700 font-semibold text-sm transition-all active:scale-95">⌫</button>
+                                    <button onclick="simInput('%')" class="h-12 rounded-xl bg-slate-800 text-brand-300 hover:bg-slate-700 font-semibold text-sm transition-all active:scale-95">%</button>
+                                    <button onclick="simInput('/')" class="h-12 rounded-xl bg-brand-600/30 text-brand-300 hover:bg-brand-600/50 font-bold text-base transition-all active:scale-95">÷</button>
+
+                                    <button onclick="simInput('7')" class="h-12 rounded-xl bg-slate-800/80 text-white hover:bg-slate-700 font-semibold text-base transition-all active:scale-95">7</button>
+                                    <button onclick="simInput('8')" class="h-12 rounded-xl bg-slate-800/80 text-white hover:bg-slate-700 font-semibold text-base transition-all active:scale-95">8</button>
+                                    <button onclick="simInput('9')" class="h-12 rounded-xl bg-slate-800/80 text-white hover:bg-slate-700 font-semibold text-base transition-all active:scale-95">9</button>
+                                    <button onclick="simInput('*')" class="h-12 rounded-xl bg-brand-600/30 text-brand-300 hover:bg-brand-600/50 font-bold text-base transition-all active:scale-95">×</button>
+
+                                    <button onclick="simInput('4')" class="h-12 rounded-xl bg-slate-800/80 text-white hover:bg-slate-700 font-semibold text-base transition-all active:scale-95">4</button>
+                                    <button onclick="simInput('5')" class="h-12 rounded-xl bg-slate-800/80 text-white hover:bg-slate-700 font-semibold text-base transition-all active:scale-95">5</button>
+                                    <button onclick="simInput('6')" class="h-12 rounded-xl bg-slate-800/80 text-white hover:bg-slate-700 font-semibold text-base transition-all active:scale-95">6</button>
+                                    <button onclick="simInput('-')" class="h-12 rounded-xl bg-brand-600/30 text-brand-300 hover:bg-brand-600/50 font-bold text-base transition-all active:scale-95">−</button>
+
+                                    <button onclick="simInput('1')" class="h-12 rounded-xl bg-slate-800/80 text-white hover:bg-slate-700 font-semibold text-base transition-all active:scale-95">1</button>
+                                    <button onclick="simInput('2')" class="h-12 rounded-xl bg-slate-800/80 text-white hover:bg-slate-700 font-semibold text-base transition-all active:scale-95">2</button>
+                                    <button onclick="simInput('3')" class="h-12 rounded-xl bg-slate-800/80 text-white hover:bg-slate-700 font-semibold text-base transition-all active:scale-95">3</button>
+                                    <button onclick="simInput('+')" class="h-12 rounded-xl bg-brand-600/30 text-brand-300 hover:bg-brand-600/50 font-bold text-base transition-all active:scale-95">+</button>
+
+                                    <button onclick="simInput('00')" class="h-12 rounded-xl bg-slate-800/80 text-white hover:bg-slate-700 font-semibold text-sm transition-all active:scale-95">00</button>
+                                    <button onclick="simInput('0')" class="h-12 rounded-xl bg-slate-800/80 text-white hover:bg-slate-700 font-semibold text-base transition-all active:scale-95">0</button>
+                                    <button onclick="simInput('.')" class="h-12 rounded-xl bg-slate-800/80 text-white hover:bg-slate-700 font-semibold text-base transition-all active:scale-95">.</button>
+                                    <button onclick="simCalculate()" class="h-12 rounded-xl bg-brand-600 text-white hover:bg-brand-500 font-bold text-lg shadow-md shadow-brand-600/40 transition-all active:scale-95">=</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Showcase Section -->
+        <section id="features" class="py-20 border-t border-white/5 bg-slate-950/60">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                    <h2 class="text-xs uppercase tracking-widest text-brand-400 font-bold font-display">Engineered for Excellence</h2>
+                    <p class="text-3xl sm:text-4xl font-extrabold text-white">Why Orinzent Calculator Outperforms Standard Apps</p>
+                    <p class="text-slate-400">Built with precision mathematics, an AI math core, and clean intuitive controls.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Feature 1 -->
+                    <div class="glass-card p-8 rounded-3xl hover:border-brand-500/40 transition-all group">
+                        <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center mb-6 border border-indigo-500/20 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Arbitrary Decimal Precision</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            No more IEEE 754 floating point mistakes like <code class="text-brand-300">0.1 + 0.2 = 0.30000000000000004</code>. Powered by high-precision exact math representation for banking, finance, and engineering accuracy.
+                        </p>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="glass-card p-8 rounded-3xl hover:border-brand-500/40 transition-all group">
+                        <div class="w-12 h-12 rounded-2xl bg-purple-500/10 text-purple-400 flex items-center justify-center mb-6 border border-purple-500/20 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">AI Math Problem Assistant</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Have a word problem or natural language calculation? Type it in plain English. The AI engine parses expressions and gives instant, step-by-step solutions without saving your private queries.
+                        </p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="glass-card p-8 rounded-3xl hover:border-brand-500/40 transition-all group">
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-6 border border-emerald-500/20 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">100% Offline & Private</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Zero login requirement. No tracking telemetry, no advertising IDs, and no contact access. Your history and data remain strictly on your local device.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Complete Calculators Suite Section -->
+        <section id="calculators" class="py-20 border-t border-white/5 glow-indigo">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                    <div>
+                        <span class="text-xs uppercase tracking-widest text-brand-400 font-bold font-display">Specialized Tooling</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">Comprehensive Calculator Suite</h2>
+                    </div>
+                    <p class="text-slate-400 max-w-md text-sm">
+                        Everything you need in a single lightweight app. No need to install dozens of separate calculators.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <!-- Card: Loan & EMI -->
+                    <div class="glass-card p-6 rounded-2xl border border-white/5 hover:border-brand-500/30 transition-all">
+                        <div class="text-2xl mb-3">🏦</div>
+                        <h4 class="font-bold text-white text-lg mb-1">Loan & EMI Calculator</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed">Calculate monthly EMI, total interest payable, loan amortization, and principal breakdown effortlessly.</p>
+                    </div>
+
+                    <!-- Card: Currency Converter -->
+                    <div class="glass-card p-6 rounded-2xl border border-white/5 hover:border-brand-500/30 transition-all">
+                        <div class="text-2xl mb-3">💱</div>
+                        <h4 class="font-bold text-white text-lg mb-1">Currency Converter</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed">Live and offline exchange rates across 150+ world currencies with quick bilateral conversion.</p>
+                    </div>
+
+                    <!-- Card: BMI & Health -->
+                    <div class="glass-card p-6 rounded-2xl border border-white/5 hover:border-brand-500/30 transition-all">
+                        <div class="text-2xl mb-3">⚖️</div>
+                        <h4 class="font-bold text-white text-lg mb-1">BMI & Health Index</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed">Interactive body mass index calculator with categorized visual gauge and healthy weight guides.</p>
+                    </div>
+
+                    <!-- Card: Unit Converter -->
+                    <div class="glass-card p-6 rounded-2xl border border-white/5 hover:border-brand-500/30 transition-all">
+                        <div class="text-2xl mb-3">📐</div>
+                        <h4 class="font-bold text-white text-lg mb-1">Multi-Unit Converter</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed">Convert Length, Area, Volume, Speed, Temperature, Mass, and Digital Data units instantly.</p>
+                    </div>
+
+                    <!-- Card: Discount & Tip -->
+                    <div class="glass-card p-6 rounded-2xl border border-white/5 hover:border-brand-500/30 transition-all">
+                        <div class="text-2xl mb-3">🏷️</div>
+                        <h4 class="font-bold text-white text-lg mb-1">Discount & Tip Helper</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed">Quick shopping discount calculations, bill splitting with tips, and percentage savings.</p>
+                    </div>
+
+                    <!-- Card: Date & Age -->
+                    <div class="glass-card p-6 rounded-2xl border border-white/5 hover:border-brand-500/30 transition-all">
+                        <div class="text-2xl mb-3">📅</div>
+                        <h4 class="font-bold text-white text-lg mb-1">Date Difference & Age</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed">Calculate exact days, months, and years between dates, or add/subtract days to deadlines.</p>
+                    </div>
+
+                    <!-- Card: CGPA & GPA -->
+                    <div class="glass-card p-6 rounded-2xl border border-white/5 hover:border-brand-500/30 transition-all">
+                        <div class="text-2xl mb-3">🎓</div>
+                        <h4 class="font-bold text-white text-lg mb-1">Academic CGPA Calculator</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed">Semester GPA and cumulative CGPA tracker supporting customizable university grading scales.</p>
+                    </div>
+
+                    <!-- Card: History & Memory -->
+                    <div class="glass-card p-6 rounded-2xl border border-white/5 hover:border-brand-500/30 transition-all">
+                        <div class="text-2xl mb-3">📜</div>
+                        <h4 class="font-bold text-white text-lg mb-1">Persistent History</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed">Review past calculations anytime. Tap any past formula to reuse or inspect its components.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Download Section -->
+        <section id="download" class="py-20 border-t border-white/5 bg-gradient-to-b from-slate-900/60 to-slate-950">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/10 text-brand-300 text-xs font-semibold">
+                    Available Everywhere
+                </div>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white">Get Orinzent Calculator Today</h2>
+                <p class="text-slate-400 max-w-xl mx-auto text-base">
+                    Upgrade to a modern, lightning-fast calculator designed for everyday users, students, and professionals.
+                </p>
+
+                <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+                    <!-- Google Play / Android -->
+                    <div class="flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-white/10 hover:bg-white/15 border border-white/10 text-white cursor-pointer transition-all hover:scale-105">
+                        <svg class="w-7 h-7 text-emerald-400" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M3.609 1.814L13.792 12 3.61 22.186a2.41 2.41 0 0 1-.61-.914c-.16-.412-.25-.863-.25-1.332V4.06c0-.469.09-.92.25-1.332.14-.366.36-.684.609-.914zm11.242 11.245l2.062 2.062-11.458 6.554 9.396-8.616zm0-2.118L5.457 2.325l11.458 6.554-2.064 2.062zm1.488 1.489l3.418-1.956c1.173-.672 1.173-1.767 0-2.439l-3.418-1.956-1.792 1.792 1.792 1.792z"/>
+                        </svg>
+                        <div class="text-left">
+                            <div class="text-[10px] text-slate-400 leading-none">GET IT FOR</div>
+                            <div class="text-sm font-bold font-display">Android Device</div>
+                        </div>
+                    </div>
+
+                    <!-- Web Application -->
+                    <a href="#simulator" onclick="navigateTo('home', 'simulator')" class="flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-brand-600 hover:bg-brand-500 text-white cursor-pointer transition-all hover:scale-105 shadow-lg shadow-brand-600/30">
+                        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                        </svg>
+                        <div class="text-left">
+                            <div class="text-[10px] text-brand-200 leading-none">LAUNCH IN</div>
+                            <div class="text-sm font-bold font-display">Web Browser</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============================================================== -->
+    <!-- VIEW 2: DEDICATED PRIVACY POLICY PAGE                          -->
+    <!-- ============================================================== -->
+    <main id="privacyView" class="hidden flex-grow pt-10 pb-28 px-4 sm:px-6 lg:px-8">
+        <article class="max-w-4xl mx-auto glass-card rounded-3xl p-6 sm:p-12 border border-white/10 shadow-2xl">
+            
+            <!-- Breadcrumb Navigation -->
+            <div class="flex items-center justify-between mb-8 pb-6 border-b border-white/10">
+                <a href="#home" onclick="navigateTo('home'); return false;" class="inline-flex items-center gap-2 text-sm font-semibold text-brand-400 hover:text-brand-300 transition-colors">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                    Back to Calculator Website
+                </a>
+                <span class="text-xs uppercase tracking-wider text-slate-500 font-bold">Legal Document</span>
+            </div>
+
+            <!-- Page Title -->
+            <header class="mb-12">
+                <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight mb-4 font-display">
+                    Privacy Policy
+                </h1>
+                <p class="text-slate-400 font-medium flex items-center text-sm">
+                    <span class="inline-block w-3 h-3 rounded-full bg-emerald-400 mr-2.5"></span>
+                    Orinzent Calculator &bull; Last updated: January 2026
                 </p>
             </header>
 
-            <!-- Overview -->
-            <section>
-                <h2 class="text-2xl font-bold mb-4 flex items-center">
-                    Overview
+            <!-- 1. Overview -->
+            <section class="space-y-4">
+                <h2 class="text-2xl font-bold text-white font-display flex items-center">
+                    <span class="accent-dot"></span> 1. Overview
                 </h2>
-                <p class="text-lg text-slate-600 leading-relaxed">
+                <p class="text-slate-300 leading-relaxed text-base">
                     This Calculator app is built with a fundamental commitment to user privacy. We do not require account creation, and most core features are designed to work entirely offline. Our philosophy is simple: we do not collect personal information such as your name, email address, or contacts.
                 </p>
             </section>
 
-            <div class="section-divider"></div>
+            <div class="h-px bg-white/10 my-10"></div>
 
-            <!-- Data Collection -->
-            <section>
-                <h2 class="text-2xl font-bold mb-4">Data Collection</h2>
-                <div class="space-y-4 text-slate-600 leading-relaxed">
+            <!-- 2. Data Collection -->
+            <section class="space-y-4">
+                <h2 class="text-2xl font-bold text-white font-display flex items-center">
+                    <span class="accent-dot"></span> 2. Data Collection
+                </h2>
+                <div class="space-y-3 text-slate-300 leading-relaxed text-base">
                     <p>
                         We do not collect or store personal data. All calculations and inputs remain strictly on your device.
                     </p>
-                    <p class="pl-5 border-l-2 border-indigo-100">
-                        <span class="text-slate-900 font-semibold">AI Calculator:</span> If you use the AI Calculator feature, the text you enter may be processed temporarily to generate responses. This data is transient, processed in real-time, and is never stored or linked to your identity.
-                    </p>
+                    <div class="p-4 rounded-xl bg-brand-500/10 border-l-4 border-brand-500 text-slate-200">
+                        <span class="text-white font-semibold">AI Calculator:</span> If you use the AI Calculator feature, the text you enter may be processed temporarily to generate responses. This data is transient, processed in real-time, and is never stored or linked to your identity.
+                    </div>
                 </div>
             </section>
 
-            <div class="section-divider"></div>
+            <div class="h-px bg-white/10 my-10"></div>
 
-            <!-- Data Storage -->
-            <section>
-                <h2 class="text-2xl font-bold mb-4">Data Storage</h2>
-                <p class="text-slate-600 leading-relaxed mb-6">
-                    Some data may be stored locally on your device for functionality. This data is never transmitted to any external server:
+            <!-- 3. Data Storage -->
+            <section class="space-y-4">
+                <h2 class="text-2xl font-bold text-white font-display flex items-center">
+                    <span class="accent-dot"></span> 3. Data Storage
+                </h2>
+                <p class="text-slate-300 leading-relaxed text-base">
+                    Some data may be stored locally on your device for core application functionality. This data is never transmitted to any external server:
                 </p>
-                <ul class="space-y-3">
-                    <li class="flex items-center text-slate-600">
-                        <span class="accent-dot"></span> Calculation history
+                <ul class="space-y-2.5 pl-2">
+                    <li class="flex items-center text-slate-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-brand-400 mr-3"></span> Calculation history
                     </li>
-                    <li class="flex items-center text-slate-600">
-                        <span class="accent-dot"></span> App preferences (theme, number format, settings)
+                    <li class="flex items-center text-slate-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-brand-400 mr-3"></span> App preferences (theme, number formatting, default units)
                     </li>
                 </ul>
             </section>
 
-            <div class="section-divider"></div>
+            <div class="h-px bg-white/10 my-10"></div>
 
-            <!-- Data Retention & Deletion -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <section>
-                    <h2 class="text-2xl font-bold mb-4">Data Retention</h2>
-                    <p class="text-slate-600 leading-relaxed">
-                        All local data remains on your device until you manually clear it or uninstall the app. We do not retain any user data on external servers.
+            <!-- 4. Data Retention & Deletion -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <section class="space-y-3">
+                    <h2 class="text-xl font-bold text-white font-display flex items-center">
+                        <span class="accent-dot"></span> 4. Data Retention
+                    </h2>
+                    <p class="text-slate-300 leading-relaxed text-sm">
+                        All local data remains exclusively on your device until you manually clear it or uninstall the app. We do not retain any user data on external servers.
                     </p>
                 </section>
-                <section>
-                    <h2 class="text-2xl font-bold mb-4">Data Deletion</h2>
-                    <p class="text-slate-600 leading-relaxed">
-                        You can delete your data by clearing app data in your device settings or uninstalling the app. This permanently removes all stored data.
+                <section class="space-y-3">
+                    <h2 class="text-xl font-bold text-white font-display flex items-center">
+                        <span class="accent-dot"></span> 5. Data Deletion
+                    </h2>
+                    <p class="text-slate-300 leading-relaxed text-sm">
+                        You can delete your data at any time by clearing app data in your device settings or uninstalling the app. This permanently removes all locally stored calculation records.
                     </p>
                 </section>
             </div>
 
-            <div class="section-divider"></div>
+            <div class="h-px bg-white/10 my-10"></div>
 
-            <!-- Third-Party Services -->
-            <section>
-                <h2 class="text-2xl font-bold mb-4">Third-Party Services</h2>
-                <p class="text-slate-600 leading-relaxed">
-                    This app does not use third-party analytics, ads, or tracking services. If AI functionality is utilized, it may rely on local or external processing models, but no personally identifiable information is collected or stored.
+            <!-- 6. Third-Party Services -->
+            <section class="space-y-4">
+                <h2 class="text-2xl font-bold text-white font-display flex items-center">
+                    <span class="accent-dot"></span> 6. Third-Party Services
+                </h2>
+                <p class="text-slate-300 leading-relaxed text-base">
+                    This app does not use third-party analytics, advertisements, or tracking services. If AI functionality is utilized, it may rely on local or external processing models, but no personally identifiable information is collected or stored.
                 </p>
             </section>
 
-            <div class="section-divider"></div>
+            <div class="h-px bg-white/10 my-10"></div>
 
-            <!-- Permissions & Children -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <section>
-                    <h2 class="text-2xl font-bold mb-4">Permissions</h2>
-                    <p class="text-slate-600 leading-relaxed">
-                        The app does not request sensitive permissions such as location, contacts, or camera access.
+            <!-- 7. Permissions & Children's Privacy -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <section class="space-y-3">
+                    <h2 class="text-xl font-bold text-white font-display flex items-center">
+                        <span class="accent-dot"></span> 7. Permissions
+                    </h2>
+                    <p class="text-slate-300 leading-relaxed text-sm">
+                        The app does not request sensitive permissions such as location, contacts, microphones, or camera access.
                     </p>
                 </section>
-                <section>
-                    <h2 class="text-2xl font-bold mb-4">Children’s Privacy</h2>
-                    <p class="text-slate-600 leading-relaxed">
-                        This app does not knowingly collect personal data from children and is safe for general audiences.
+                <section class="space-y-3">
+                    <h2 class="text-xl font-bold text-white font-display flex items-center">
+                        <span class="accent-dot"></span> 8. Children’s Privacy
+                    </h2>
+                    <p class="text-slate-300 leading-relaxed text-sm">
+                        This app does not knowingly collect personal data from children and is completely safe for general audiences of all ages.
                     </p>
                 </section>
             </div>
 
-            <div class="section-divider"></div>
+            <div class="h-px bg-white/10 my-10"></div>
 
-            <!-- Changes -->
-            <section>
-                <h2 class="text-2xl font-bold mb-4">Changes to This Policy</h2>
-                <p class="text-slate-600 leading-relaxed">
+            <!-- 9. Changes to This Policy -->
+            <section class="space-y-3">
+                <h2 class="text-xl font-bold text-white font-display flex items-center">
+                    <span class="accent-dot"></span> 9. Changes to This Policy
+                </h2>
+                <p class="text-slate-300 leading-relaxed text-base">
                     We may update this Privacy Policy from time to time. Updates will be reflected directly on this page.
                 </p>
             </section>
 
-            <!-- Final Contact -->
-            <section class="mt-24 pt-12 border-t-4 border-indigo-600">
-                <h2 class="text-3xl font-bold mb-4">Contact</h2>
-                <p class="text-slate-500 mb-8">If you have any questions, please contact us at:</p>
-                <a href="mailto:your-email@example.com" class="text-2xl font-bold text-indigo-600 hover:text-indigo-700 transition-colors break-all">
+            <!-- 10. Contact Section -->
+            <section class="mt-12 p-8 rounded-2xl bg-slate-900/80 border border-brand-500/30">
+                <h2 class="text-2xl font-bold text-white font-display mb-2">Questions or Feedback?</h2>
+                <p class="text-slate-400 text-sm mb-4">If you have any questions regarding privacy or your data, reach out directly at:</p>
+                <a href="mailto:your-orinzent@gmail.com" class="text-xl font-bold text-brand-400 hover:text-brand-300 transition-colors">
                     your-orinzent@gmail.com
                 </a>
             </section>
 
+            <div class="mt-10 text-center">
+                <button onclick="navigateTo('home')" class="px-6 py-3 rounded-xl bg-white/10 hover:bg-white/15 text-white font-semibold transition-all">
+                    Return to Main Website
+                </button>
+            </div>
+
         </article>
     </main>
 
+    <!-- ============================================================== -->
+    <!-- APP FOOTER                                                     -->
+    <!-- ============================================================== -->
+    <footer class="bg-slate-950 border-t border-white/5 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                
+                <!-- Brand Info -->
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center font-bold text-white">O</div>
+                    <div>
+                        <span class="font-display font-bold text-white tracking-tight">Orinzent Calculator</span>
+                        <p class="text-xs text-slate-500">&copy; 2026 Orinzent. All rights reserved.</p>
+                    </div>
+                </div>
+
+                <!-- Footer Links -->
+                <div class="flex items-center gap-8 text-sm text-slate-400">
+                    <a href="#home" onclick="navigateTo('home'); return false;" class="hover:text-white transition-colors">Home</a>
+                    <a href="#features" onclick="navigateTo('home', 'features')" class="hover:text-white transition-colors">Features</a>
+                    <a href="#calculators" onclick="navigateTo('home', 'calculators')" class="hover:text-white transition-colors">Calculators</a>
+                    <a href="#privacy" onclick="navigateTo('privacy'); return false;" class="text-brand-400 hover:text-brand-300 font-semibold transition-colors">Privacy Policy</a>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================== -->
+    <!-- JAVASCRIPT: PAGE ROUTING & INTERACTIVE CALCULATOR ENGINE      -->
+    <!-- ============================================================== -->
+    <script>
+        // -------------------------------------------------------------
+        // Dedicated Page Routing (Home vs. Privacy Policy)
+        // -------------------------------------------------------------
+        function navigateTo(page, targetId) {
+            const homeView = document.getElementById('homeView');
+            const privacyView = document.getElementById('privacyView');
+
+            if (page === 'privacy') {
+                homeView.classList.add('hidden');
+                privacyView.classList.remove('hidden');
+                window.location.hash = 'privacy';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                privacyView.classList.add('hidden');
+                homeView.classList.remove('hidden');
+                window.location.hash = targetId || 'home';
+                if (targetId) {
+                    const el = document.getElementById(targetId);
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            }
+        }
+
+        // Handle browser Back/Forward & direct URL hash on load
+        function handleHash() {
+            const hash = window.location.hash;
+            if (hash === '#privacy') {
+                navigateTo('privacy');
+            } else if (hash.startsWith('#')) {
+                const target = hash.replace('#', '');
+                if (target === 'features' || target === 'calculators' || target === 'simulator' || target === 'download') {
+                    navigateTo('home', target);
+                } else {
+                    navigateTo('home');
+                }
+            } else {
+                navigateTo('home');
+            }
+        }
+
+        window.addEventListener('hashchange', handleHash);
+        window.addEventListener('DOMContentLoaded', handleHash);
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // -------------------------------------------------------------
+        // Interactive Phone Mockup Calculator Logic
+        // -------------------------------------------------------------
+        let simExpression = '';
+        let isScientificMode = false;
+
+        function toggleScientificUI() {
+            isScientificMode = !isScientificMode;
+            const sciPanel = document.getElementById('sciKeysPanel');
+            const sciBtn = document.getElementById('sciToggleBtn');
+            if (isScientificMode) {
+                sciPanel.classList.remove('hidden');
+                sciPanel.classList.add('grid');
+                sciBtn.textContent = 'Sci: ON';
+                sciBtn.classList.replace('text-brand-300', 'text-emerald-300');
+            } else {
+                sciPanel.classList.add('hidden');
+                sciPanel.classList.remove('grid');
+                sciBtn.textContent = 'Sci: OFF';
+                sciBtn.classList.replace('text-emerald-300', 'text-brand-300');
+            }
+        }
+
+        function simInput(val) {
+            simExpression += val;
+            updateSimDisplay();
+        }
+
+        function simClear() {
+            simExpression = '';
+            document.getElementById('simHistory').textContent = '';
+            updateSimDisplay();
+        }
+
+        function simBackspace() {
+            simExpression = simExpression.slice(0, -1);
+            updateSimDisplay();
+        }
+
+        function updateSimDisplay() {
+            const display = document.getElementById('simDisplay');
+            display.textContent = simExpression.length > 0 ? simExpression : '0';
+        }
+
+        function simCalculate() {
+            if (!simExpression) return;
+            try {
+                let evalExpr = simExpression
+                    .replace(/×/g, '*')
+                    .replace(/÷/g, '/')
+                    .replace(/pi/g, 'Math.PI')
+                    .replace(/sin\(/g, 'Math.sin(')
+                    .replace(/cos\(/g, 'Math.cos(')
+                    .replace(/tan\(/g, 'Math.tan(')
+                    .replace(/sqrt\(/g, 'Math.sqrt(')
+                    .replace(/\^/g, '**');
+
+                // Basic percentage handling (e.g. 100 * 20%)
+                evalExpr = evalExpr.replace(/(\d+(?:\.\d+)?)%/g, '($1/100)');
+
+                // Safe mathematical evaluation
+                const result = Function(`'use strict'; return (${evalExpr})`)();
+                
+                document.getElementById('simHistory').textContent = simExpression + ' =';
+                
+                // Format floating numbers cleanly
+                let formattedResult = Number.isInteger(result) ? result.toString() : parseFloat(result.toFixed(8)).toString();
+                simExpression = formattedResult;
+                updateSimDisplay();
+            } catch (err) {
+                document.getElementById('simDisplay').textContent = 'Error';
+                simExpression = '';
+            }
+        }
+    </script>
 </body>
 </html>
